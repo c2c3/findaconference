@@ -7,6 +7,10 @@ RUN bun install
 COPY . .
 
 ENV NODE_ENV production
+# These are needed because of an issue in SvelteKit bun adapter
+# https://github.com/gornostay25/svelte-adapter-bun/issues/39
+ENV PROTOCOL_HEADER=x-forwarded-proto
+ENV HOST_HEADER=x-forwarded-host
 
 ENV GITHUB_CLIENT_ID=$GITHUB_CLIENT_ID
 ENV GITHUB_CLIENT_SECRET=$GITHUB_CLIENT_SECRET
