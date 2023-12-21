@@ -11,6 +11,7 @@ ENV NODE_ENV production
 # https://github.com/gornostay25/svelte-adapter-bun/issues/39
 ENV PROTOCOL_HEADER=x-forwarded-proto
 ENV HOST_HEADER=x-forwarded-host
+ENV HOST 0.0.0.0
 
 ENV GITHUB_CLIENT_ID=$GITHUB_CLIENT_ID
 ENV GITHUB_CLIENT_SECRET=$GITHUB_CLIENT_SECRET
