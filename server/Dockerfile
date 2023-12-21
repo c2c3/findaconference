@@ -8,4 +8,6 @@ COPY . .
 
 ENV NODE_ENV production
 
-CMD [ "bun", "start" ]
+RUN bun run build
+
+CMD [ "bun", "./build/index.js" ]
