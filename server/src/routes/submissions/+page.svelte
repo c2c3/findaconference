@@ -31,7 +31,7 @@
 		</div>
 	</div>
 </div>
-<ConferenceList conferences={data.conferences}></ConferenceList>
+<ConferenceList prepath="/submissions" conferences={data.conferences}></ConferenceList>
 
 <style>
 </style>

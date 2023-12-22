@@ -3,6 +3,9 @@ import GitHub from '@auth/sveltekit/providers/github';
 import { GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET, AUTH_SECRET } from '$env/static/private';
 import { redirect, type Handle, type RequestEvent, type MaybePromise } from '@sveltejs/kit';
 import { sequence } from '@sveltejs/kit/hooks';
+import { startMongo } from '$db/mongo';
+
+startMongo().then(() => console.log("Mongo Started"));
 
 async function authorization({
 	event,
@@ -12,10 +15,10 @@ async function authorization({
 	resolve: (requestEvent: RequestEvent) => MaybePromise<Response>;
 }) {
 	// Protect any routes under /authenticated
-	if (event.url.pathname.startsWith('/authenticated')) {
+	if (event.url.pathname == ('/conference')) {
 		const session = await event.locals.getSession();
 		if (!session) {
-			throw redirect(303, '/auth');
+			throw redirect(303, '/auth/signin');
 		}
 	}
 

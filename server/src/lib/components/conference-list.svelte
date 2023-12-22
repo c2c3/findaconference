@@ -1,13 +1,11 @@
 <script lang="ts">
-	interface Conference {
-		date: Date;
-		name: string;
-		theme: string;
-		location: string;
-		paid: boolean;
-	}
+	import type { Conference } from "$db/conferences";
+
 	export let conferences: Conference[];
-	const formatter = new Intl.DateTimeFormat('en-US');
+    export let prepath: string = "/conference";
+	const formatter = new Intl.DateTimeFormat('en-US', {
+        timeZone: "utc"
+    });
 </script>
 
 <table
@@ -25,11 +23,11 @@
 	<tbody>
 		{#each conferences as conference, i}
 			<tr>
-				<td class="px-6 py-3">
-					<a href="/conference/1">{formatter.format(conference.date)}</a>
+				<td class="px-6 py-3 text-orange-400">
+					<a href={`${prepath}/${conference._id}`}>{formatter.format(conference.date)}</a>
 				</td>
-				<td class="px-6 py-3">
-                    <a href="/conference/1">{conference.name}</a>
+				<td class="px-6 py-3 text-orange-400">
+                    <a href={`${prepath}/${conference._id}`}>{conference.name}</a>
                 </td>
 				<td class="px-6 py-3">{conference.theme}</td>
 				<td class="px-6 py-3">{conference.location}</td>

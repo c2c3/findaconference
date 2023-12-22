@@ -15,6 +15,7 @@
 					{#if $page.data.session == null}
 						<button class="h-12 border-black border-2 p-2.5 bg-[#A6FAFF] hover:bg-[#79F7FF] hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] active:bg-[#00E1EF]" on:click={() => signIn('github')}>Login with Github</button>
 					{:else}
+                        <a href="/submissions" class="h-12 border-black border-2 p-2.5 bg-[#A6FAFF] hover:bg-[#79F7FF] hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] active:bg-[#00E1EF]">My Submissions</a>
 						<button class="h-12 border-black border-2 p-2.5 bg-[#A6FAFF] hover:bg-[#79F7FF] hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] active:bg-[#00E1EF]" on:click={() => signOut()}>Sign Out</button>
 					{/if}
 				</li>
