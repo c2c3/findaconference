@@ -13,14 +13,15 @@
 	];
 </script>
 
-<h1>Find a conference!</h1>
+<div class="flex">
+    <h1 class="flex-1 text-[32px] mb-4">Find a conference!</h1>
 
-<button disabled={$page.data.session == null}>Add a conference</button>
+<button
+	class="flex-initial h-12 border-black border-2 p-2.5 bg-[#A6FAFF] hover:bg-[#79F7FF] hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] active:bg-[#00E1EF] mb-2.5"
+	disabled={$page.data.session == null}>Add a conference</button
+>
+</div>
 <ConferenceList {conferences}></ConferenceList>
 
 <style>
-	button {
-		display: inline-block;
-		width: 300px;
-	}
 </style>

@@ -10,24 +10,24 @@
     const formatter = new Intl.DateTimeFormat('en-US');
 </script>
 
-<table>
-	<thead>
+<table class="relative overflow-x-auto w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+	<thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
 		<tr>
-			<th scope="col">Date</th>
-			<th scope="col">Name</th>
-			<th scope="col">Theme</th>
-			<th scope="col">Location</th>
-			<th scope="col">Paid/Free</th>
+			<th scope="col" class="px-6 py-3">Date</th>
+            <th scope="col" class="px-6 py-3">Name</th>
+			<th scope="col" class="px-6 py-3">Theme</th>
+			<th scope="col" class="px-6 py-3">Location</th>
+			<th scope="col" class="px-6 py-3">Paid/Free</th>
 		</tr>
 	</thead>
 	<tbody>
 		{#each conferences as conference, i}
 			<tr>
-				<td>{formatter.format(conference.date)}</td>
-				<td>{conference.name}</td>
-				<td>{conference.theme}</td>
-				<td>{conference.location}</td>
-				<td>{conference.paid ? "Paid" : "Free"}</td>
+				<td class="px-6 py-3">{formatter.format(conference.date)}</td>
+				<td class="px-6 py-3">{conference.name}</td>
+				<td class="px-6 py-3">{conference.theme}</td>
+				<td class="px-6 py-3">{conference.location}</td>
+				<td class="px-6 py-3">{conference.paid ? "Paid" : "Free"}</td>
 			</tr>
 		{/each}
 	</tbody>
