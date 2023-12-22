@@ -14,7 +14,7 @@
 </script>
 
 <div class="flex">
-    <h1 class="flex-1 text-[32px] mb-4">Find a conference!</h1>
+    <h1 class="flex-1 text-[32px] mb-4">Conference List</h1>
 
 <button
 	class="flex-initial h-12 border-black border-2 p-2.5 bg-[#A6FAFF] hover:bg-[#79F7FF] hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] active:bg-[#00E1EF] mb-2.5"

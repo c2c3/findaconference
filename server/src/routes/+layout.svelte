@@ -8,7 +8,7 @@
 	<main>
 		<nav class="flex mb-4">
 			<ul class="flex-1">
-				<li><strong>Find A Conference</strong></li>
+				<li><a class="text-lg h-12 border-black border-2 p-2.5 bg-lime-200 hover:bg-lime-300 hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] active:bg-lime-400" href="/">Find A Conference</a></li>
 			</ul>
 			<ul class="flex-initial">
 				<li>
