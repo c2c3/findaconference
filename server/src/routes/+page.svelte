@@ -33,5 +33,7 @@
 </div>
 <ConferenceList conferences={data.conferences}></ConferenceList>
 
-<style>
-</style>
+<svelte:head>
+    <title>Conference List - Find a Conference</title>
+    <meta name="description" content="Find a conference to attend today!" />
+</svelte:head>

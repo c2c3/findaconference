@@ -23,3 +23,9 @@
 		<p class="text-2xl block">{data.conference.paid ? "No" : "Yes"}</p>
 	</div>
 </article>
+
+
+<svelte:head>
+    <title>{data.conference.name} Conference Details - Find a Conference</title>
+    <meta name="description" content={`${data.conference.name}: ${data.conference.location} starting on ${formatter.format(data.conference.date)}`} />
+</svelte:head>
