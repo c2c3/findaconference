@@ -29,6 +29,8 @@ ENV HOST_HEADER "X-Forwarded-Host"
 ENV SERVERDEV false
 ENV MONGO_URL MONGO_URL
 
+RUN echo "${MONGO_URL}"
+
 RUN npm run build
 
 CMD [ "node", "./build/index.js" ]
