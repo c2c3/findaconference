@@ -1,4 +1,4 @@
-FROM node:21-alpine
+FROM oven/bun
 
 WORKDIR /usr/src/app
 
@@ -9,7 +9,7 @@ ARG NEXTAUTH_URL
 ARG MONGO_URL
 
 COPY package*.json bun.lockb ./
-RUN npm ci
+RUN bun install
 COPY . .
 
 ENV NODE_ENV production
@@ -27,10 +27,8 @@ ENV XFF_DEPTH 2
 ENV PROTOCOL_HEADER "X-Forwarded-Proto"
 ENV HOST_HEADER "X-Forwarded-Host"
 ENV SERVERDEV false
-ENV MONGO_URL MONGO_URL
+ENV MONGO_URL $MONGO_URL
 
-RUN echo "${MONGO_URL}"
+RUN bun run build
 
-RUN npm run build
-
-CMD [ "node", "./build/index.js" ]
+CMD [ "bun", "./build/index.js" ]
