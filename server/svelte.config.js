@@ -15,10 +15,6 @@ const config = {
 		alias: {
 			'$db': './src/db'
 		},
-		// This feels bad.
-		csrf: {
-			checkOrigin: false
-		}
 	}
 };
 

@@ -1,5 +1,4 @@
 import { SvelteKitAuth } from '@auth/sveltekit';
-import { skipCSRFCheck } from '@auth/core';
 import GitHub from '@auth/sveltekit/providers/github';
 import { GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET, AUTH_SECRET } from '$env/static/private';
 import { redirect, type Handle, type RequestEvent, type MaybePromise } from '@sveltejs/kit';
@@ -36,7 +35,6 @@ export const handle: Handle = sequence(
 				clientSecret: GITHUB_CLIENT_SECRET
 			})
 		],
-        skipCSRFCheck: skipCSRFCheck,
 		trustHost: true,
 		secret: AUTH_SECRET,
 	}),
