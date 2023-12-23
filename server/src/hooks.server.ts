@@ -5,6 +5,7 @@ import { redirect, type Handle, type RequestEvent, type MaybePromise } from '@sv
 import { sequence } from '@sveltejs/kit/hooks';
 import { startMongo } from '$db/mongo';
 
+// TODO: move this too a hook?
 startMongo().then(() => console.log("Mongo Started"));
 
 async function authorization({
@@ -15,7 +16,7 @@ async function authorization({
 	resolve: (requestEvent: RequestEvent) => MaybePromise<Response>;
 }) {
 	// Protect any routes under /authenticated
-	if (event.url.pathname == ('/conference')) {
+	if (event.url.pathname == ('/conference' || event.url.pathname.startsWith("/submissions"))) {
 		const session = await event.locals.getSession();
 		if (!session) {
 			throw redirect(303, '/auth/signin');
@@ -35,7 +36,7 @@ export const handle: Handle = sequence(
 			})
 		],
 		trustHost: true,
-		secret: AUTH_SECRET
+		secret: AUTH_SECRET,
 	}),
 	authorization
 );
