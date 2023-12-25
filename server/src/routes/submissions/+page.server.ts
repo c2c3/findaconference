@@ -5,7 +5,10 @@ import type { PageServerLoad, PageServerLoadEvent } from './$types';
 export const load: PageServerLoad = async (event: PageServerLoadEvent) => {
 	// TODO: Pagination!
     const session = await event.locals.getSession();
-	const cursor = conferences.find({submittedBy: session!.user!.email!});
+	const cursor = conferences.find({
+        submittedBy: session!.user!.email!,
+        deletedAt: undefined
+    });
 	const items: Conference[] = [];
 	for await (const doc of cursor) {
 		items.push({
@@ -16,7 +19,9 @@ export const load: PageServerLoad = async (event: PageServerLoadEvent) => {
             paid: doc.paid,
             link: doc.link,
             location: doc.location,
-            submittedBy: doc.submittedBy
+            submittedBy: doc.submittedBy,
+            deletedAt: doc.deletedAt,
+            archivedAt: doc.archivedAt
         });
 	}
 

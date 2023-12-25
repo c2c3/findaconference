@@ -15,7 +15,7 @@
 		   response to a form submission. it will vanish if the user reloads -->
 	<a class="h-12 border-black border-2 p-2.5 bg-yellow-200 hover:bg-yellow-300 hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] active:bg-yellow-400" href={`/conference/${form.result}`}>Successfully update this conference! Click here to go to conference details!</a>
 {/if}
-		<form method="POST">
+		<form method="POST" action="?/update">
 			<label class="text-base mt-4 block" for="conference_name">Conference Name</label>
 			<input
                 type="text"
@@ -87,9 +87,29 @@
 				<input
 					type="submit"
 					value="Submit"
-					class="h-12 border-black border-2 p-2.5 bg-[#A6FAFF] hover:bg-[#79F7FF] hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] active:bg-[#00E1EF]"
+					class="h-12 border-black border-2 p-2.5 bg-teal-200 hover:bg-teal-300 hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] active:bg-teal-400 mb-2 cursor-pointer"
 				/>
 			</div>
 		</form>
+		<div>
+			<p class="text-xl border-t-2 my-4 pt-4">
+				Archive or Delete
+			</p>
+			<form method="POST" action="?/toggleArchive">
+				<input
+						type="submit"
+						value={`${data.conference.archivedAt == null ? "Archive this Conference" : "Unarchive this Conference"}`}
+						class="h-12 border-black border-2 p-2.5 bg-orange-200 hover:bg-orange-300 hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] active:bg-orange-400 mb-2 cursor-pointer"
+					/>
+			</form>
+			<form method="POST" action="?/delete">
+				<input
+						type="submit"
+						value="Delete"
+						class="h-12 border-black border-2 p-2.5 bg-red-200 hover:bg-red-300 hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] active:bg-400 cursor-pointer"
+					/>
+			</form>
+		</div>
+		
 	</div>
 </article>

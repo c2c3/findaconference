@@ -4,7 +4,10 @@ import type { PageServerLoad } from './$types';
 /** @type {import('./$types').PageServerLoad} */
 export const load: PageServerLoad = async () => {
 	// TODO: Pagination!
-	const cursor = conferences.find();
+	const cursor = conferences.find({
+        deletedAt: {$eq: undefined},
+        archivedAt: {$eq: undefined},
+    });
 	const items: Conference[] = [];
 	for await (const doc of cursor) {
 		items.push({
@@ -15,7 +18,9 @@ export const load: PageServerLoad = async () => {
             paid: doc.paid,
             location: doc.location,
             link: doc.link,
-            submittedBy: doc.submittedBy
+            submittedBy: doc.submittedBy,
+            deletedAt: doc.deletedAt,
+            archivedAt: doc.archivedAt
         });
 	}
 
