@@ -17,7 +17,7 @@
 	const isSignedIn = $page.data.session != null;
 </script>
 
-<div class="flex">
+<div class="flex px-6 py-5 bg-yellow-200 border-b-2 border-black">
 	<h1 class="flex-1 text-[32px] mb-4">Conference List</h1>
 
 	<div class="flex-1 flex flex-row-reverse">
@@ -40,13 +40,15 @@
 		</div>
 	</div>
 </div>
-<input
-	type="search"
-	bind:value={filter}
-	placeholder="Filter"
-	class="w-96 border-black bg-pink-200 border-2 p-2.5 focus:outline-none focus:shadow-[2px_2px_0px_rgba(0,0,0,1)] focus:bg-pink-300 active:shadow-[2px_2px_0px_rgba(0,0,0,1)] mb-4 placeholder:text-gray-800"
-/>
-<ConferenceList conferences={filtered}></ConferenceList>
+<div class="px-6 py-5">
+	<input
+		type="search"
+		bind:value={filter}
+		placeholder="Filter"
+		class="w-96 border-black bg-pink-200 border-2 p-2.5 focus:outline-none focus:shadow-[2px_2px_0px_rgba(0,0,0,1)] focus:bg-pink-300 active:shadow-[2px_2px_0px_rgba(0,0,0,1)] mb-4 placeholder:text-gray-800"
+	/>
+	<ConferenceList conferences={filtered}></ConferenceList>
+</div>
 
 <svelte:head>
 	<title>Conference List - Find a Conference</title>

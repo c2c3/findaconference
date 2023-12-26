@@ -8,8 +8,10 @@
 	const isSignedIn = $page.data.session != null;
 </script>
 
-<div class="flex">
-	<h1 class="flex-1 text-[32px] mb-4">Conference List</h1>
+<div class="flex px-6 py-5 bg-yellow-200 border-b-2 border-black">
+	<h1 class="flex-1 text-[32px] mb-4">
+		Conference List
+	</h1>
 
 	<div class="flex-1 flex flex-row-reverse">
 		<div class="group flex relative">
@@ -31,7 +33,7 @@
 		</div>
 	</div>
 </div>
-<ConferenceList prepath="/submissions" showStatus conferences={data.conferences}></ConferenceList>
 
-<style>
-</style>
+<div class="px-6 py-5">
+	<ConferenceList prepath="/submissions" showStatus conferences={data.conferences}></ConferenceList>
+</div>

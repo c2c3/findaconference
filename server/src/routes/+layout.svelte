@@ -21,7 +21,7 @@
 				</li>
 			</ul>
 		</nav>
-        <section class="h-full border-black border-2 rounded-md hover:shadow-[8px_8px_0px_rgba(0,0,0,1)] bg-white px-6 py-5 text-left h-full">
+        <section class="h-full border-black border-2 rounded-md hover:shadow-[8px_8px_0px_rgba(0,0,0,1)] bg-white text-left h-full">
 		    <slot />
         </section>
 	</main>
