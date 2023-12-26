@@ -9,7 +9,7 @@
 
 <article class="w-full h-full">
 	<div class="text-left h-full">
-		<h1 class="text-[32px] mb-4 px-6 py-5 bg-yellow-200 border-b-2 border-black">Edit Conference</h1>
+		<h1 class="text-[32px] px-6 py-5 bg-yellow-200 border-b-2 border-black">Edit Conference</h1>
 		<div class="px-6 py-5">
 			{#if form?.result}
 				<!-- this message is ephemeral; it exists because the page was rendered in

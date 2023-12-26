@@ -9,7 +9,7 @@
 </script>
 
 <div class="flex px-6 py-5 bg-yellow-200 border-b-2 border-black">
-	<h1 class="flex-1 text-[32px] mb-4">
+	<h1 class="flex-1 text-[32px]">
 		Conference List
 	</h1>
 
@@ -17,7 +17,7 @@
 		<div class="group flex relative">
 			<a
 				href={!isSignedIn ? '#' : '/conference'}
-				class={'flex-initial h-12 border-black border-2 p-2.5 mb-2.5 ' +
+				class={'flex-initial h-12 border-black border-2 p-2.5 ' +
 					(!isSignedIn
 						? 'bg-gray-300 cursor-not-allowed'
 						: 'bg-teal-200 hover:bg-teal-300 active:bg-teal-400 hover:shadow-[2px_2px_0px_rgba(0,0,0,1)]')}
