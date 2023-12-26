@@ -4,6 +4,15 @@
 	import type { PageData } from './$types';
 
 	export let data: PageData;
+	let filter: string | undefined;
+	$: filtered = data.conferences.filter((e) => {
+		const f = filter;
+		if (f == undefined) {
+			return true;
+		}
+		const indexes = [e.name, e.theme, e.location];
+		return indexes.some((e) => e.includes(f));
+	});
 
 	const isSignedIn = $page.data.session != null;
 </script>
@@ -31,9 +40,15 @@
 		</div>
 	</div>
 </div>
-<ConferenceList conferences={data.conferences}></ConferenceList>
+<input
+	type="search"
+	bind:value={filter}
+	placeholder="Filter"
+	class="w-96 border-black bg-pink-200 border-2 p-2.5 focus:outline-none focus:shadow-[2px_2px_0px_rgba(0,0,0,1)] focus:bg-pink-300 active:shadow-[2px_2px_0px_rgba(0,0,0,1)] mb-4 placeholder:text-gray-800"
+/>
+<ConferenceList conferences={filtered}></ConferenceList>
 
 <svelte:head>
-    <title>Conference List - Find a Conference</title>
-    <meta name="description" content="Find a conference to attend today!" />
+	<title>Conference List - Find a Conference</title>
+	<meta name="description" content="Find a conference to attend today!" />
 </svelte:head>

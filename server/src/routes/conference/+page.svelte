@@ -44,7 +44,7 @@
                 name="conference_theme"
                 type="text"
 				class="w-96 border-black border-2 p-2.5 focus:outline-none focus:shadow-[2px_2px_0px_rgba(0,0,0,1)] focus:bg-[#FFA6F6] active:shadow-[2px_2px_0px_rgba(0,0,0,1)]"
-				placeholder="you@example.com"
+				placeholder="Svelte"
 			/>
 
             <label class="text-base mt-4 block" for="conference_link">Website</label
@@ -65,7 +65,7 @@
                 name="conference_location"
 				id="conference_location"
 				class="w-96 border-black border-2 p-2.5 focus:outline-none focus:shadow-[2px_2px_0px_rgba(0,0,0,1)] focus:bg-[#FFA6F6] active:shadow-[2px_2px_0px_rgba(0,0,0,1)]"
-				placeholder="you@example.com"
+				placeholder="New York, USA"
 			/>
 
 			<label class="text-base mt-4 block" for="conference_free">Free?</label>
@@ -74,7 +74,6 @@
                 name="conference_free"
                 type="checkbox"
 				class="relative text-center cursor-pointer m-auto w-5 h-5"
-				placeholder="you@example.com"
 			/>
 
 			<div class="block mt-4">
