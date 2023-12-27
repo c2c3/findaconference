@@ -1,7 +1,6 @@
-import { conferences, type Conference } from "$db/conferences";
+import { type Conference, getSubmittedConference, replaceConference } from "$db/conferences";
 import { redirect } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
-import { ObjectId } from 'mongodb';
 import type { RequestEvent } from "./$types";
 
 
@@ -9,16 +8,11 @@ import type { RequestEvent } from "./$types";
 export const load: PageServerLoad = async (event) => {
 	const session = await event.locals.getSession();
 
-	// Apparently the mongo driver types dont accept objectIds in queries
-	// but this works, we just have to cast it to any to tell typescript not to worry.
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	const conference = await conferences.findOne({_id: new ObjectId(event.params.id) as any, submittedBy: session!.user!.email!});
+	const conference = await getSubmittedConference(event.params.id, session!.user!.email!);
 
 	if (conference == null) {
 		throw redirect(307, "/not-found");
 	}
-
-	conference._id = conference._id.toString();
 
 	return {
 		conference,
@@ -51,7 +45,7 @@ export const actions = {
 		// Apparently the mongo driver types dont accept objectIds in queries
 		// but this works, we just have to cast it to any to tell typescript not to worry.
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-        await conferences.replaceOne({_id: new ObjectId(event.params.id) as any}, conference);
+        await replaceConference(event.params.id, session!.user!.email!, conference);
 
         return {
             result: event.params.id
@@ -61,7 +55,7 @@ export const actions = {
         const session = await event.locals.getSession();
 
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		const conference = (await conferences.findOne({_id: new ObjectId(event.params.id) as any, submittedBy: session!.user!.email!}))!;
+		const conference = (await getSubmittedConference(event.params.id, session!.user!.email!))!;
 
 		if (conference.archivedAt != undefined) {
 			conference.archivedAt = undefined;
@@ -72,7 +66,7 @@ export const actions = {
 		// Apparently the mongo driver types dont accept objectIds in queries
 		// but this works, we just have to cast it to any to tell typescript not to worry.
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-        await conferences.replaceOne({_id: new ObjectId(event.params.id) as any, submittedBy: session!.user!.email!}, conference);
+		await replaceConference(event.params.id, session!.user!.email!, conference);
 
         return {
             result: event.params.id
@@ -82,8 +76,7 @@ export const actions = {
 	delete: async (event: RequestEvent) => {
         const session = await event.locals.getSession();
 
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		const conference = (await conferences.findOne({_id: new ObjectId(event.params.id) as any, submittedBy: session!.user!.email!}))!;
+		const conference = (await getSubmittedConference(event.params.id, session!.user!.email!))!;
 
 		if (conference.deletedAt != undefined) {
 			conference.deletedAt = undefined;
@@ -91,10 +84,7 @@ export const actions = {
 			conference.deletedAt = new Date();
 		}
 
-		// Apparently the mongo driver types dont accept objectIds in queries
-		// but this works, we just have to cast it to any to tell typescript not to worry.
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-        await conferences.replaceOne({_id: new ObjectId(event.params.id) as any, submittedBy: session!.user!.email!}, conference);
+		await replaceConference(event.params.id, session!.user!.email!, conference);
 
         return {
             result: event.params.id

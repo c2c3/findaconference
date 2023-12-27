@@ -1,4 +1,4 @@
-import { conferences, type Conference } from "$db/conferences";
+import { type Conference, addConference } from "$db/conferences";
 import type { RequestEvent } from "./$types";
 
 /** @type {import('./$types').Actions} */
@@ -24,10 +24,9 @@ export const actions = {
             submittedBy: session!.user!.email!
         }
 
-        const result = await conferences.insertOne(conference);
-        const id = result.insertedId;
+        const insertedId = await addConference(conference);
         return {
-            result: id.toString()
+            result: insertedId.toString()
         }
 	}
 };

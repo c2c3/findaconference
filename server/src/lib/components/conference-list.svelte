@@ -29,7 +29,7 @@
 		{#each conferences as conference, i}
 			<tr>
 				<td class="px-6 py-3 text-orange-400">
-					<a href={`${prepath}/${conference._id}`}>{formatter.format(conference.date)}</a>
+					<a href={`${prepath}/${conference.id}`}>{formatter.format(conference.date)}</a>
 				</td>
 				{#if showStatus}
 					<td class="px6 py3">
@@ -41,7 +41,7 @@
 					</td>
 				{/if}
 				<td class="px-6 py-3 text-orange-400">
-                    <a href={`${prepath}/${conference._id}`}>{conference.name}</a>
+                    <a href={`${prepath}/${conference.id}`}>{conference.name}</a>
                 </td>
 				<td class="px-6 py-3">{conference.theme}</td>
 				<td class="px-6 py-3">{conference.location}</td>
