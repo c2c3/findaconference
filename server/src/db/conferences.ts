@@ -14,7 +14,7 @@ export interface Conference {
     archivedAt?: Date;
 }
 
-export const conferences = db.collection<Conference>('conferences');
+const conferences = db.collection<Conference>('conferences');
 
 export function getSubmittedConference(mongoId: string, submittedBy: string): Promise<Conference | null> {
     return conferences.findOne({_id: new ObjectId(mongoId), submittedBy: submittedBy}).then(mongoDocToConference);
