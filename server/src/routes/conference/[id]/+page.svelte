@@ -18,7 +18,7 @@
 			<p class="text-base mt-4 block">Conference Theme</p>
 			<p class="text-2xl block">{data.conference.theme}</p>
 			<p class="text-base mt-4 block">Website</p>
-			<a class="text-2xl block" href={data.conference.link}>{data.conference.link}</a>
+			<a class="text-2xl block text-orange-400" href={data.conference.link}>{data.conference.link}</a>
 			<p class="text-base mt-4 block">Location</p>
 			<p class="text-2xl block">{data.conference.location}</p>
 			<p class="text-base mt-4 block">Free?</p>

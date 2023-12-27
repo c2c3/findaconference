@@ -42,7 +42,10 @@
 		>
 			<slot />
 		</section>
-		<footer class="p-4 flex justify-end">
+		<footer class="p-4 flex justify-end items-center">
+			<span class="mr-2">
+				Proudly open souce. Contribute @
+			</span>
 			<a href="https://www.github.com/c2c3/findaconference">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
