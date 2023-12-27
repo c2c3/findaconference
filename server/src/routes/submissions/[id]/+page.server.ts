@@ -42,9 +42,6 @@ export const actions = {
             submittedBy: session!.user!.email!
         }
 
-		// Apparently the mongo driver types dont accept objectIds in queries
-		// but this works, we just have to cast it to any to tell typescript not to worry.
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
         await replaceConference(event.params.id, session!.user!.email!, conference);
 
         return {
@@ -63,9 +60,6 @@ export const actions = {
 			conference.archivedAt = new Date();
 		}
 
-		// Apparently the mongo driver types dont accept objectIds in queries
-		// but this works, we just have to cast it to any to tell typescript not to worry.
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		await replaceConference(event.params.id, session!.user!.email!, conference);
 
         return {
